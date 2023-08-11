@@ -241,7 +241,19 @@ infer.json:
 
 - 启动程序后出现，flask持续监听。
 
-![image-20230811203352704](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/b721f06c-05f6-41d7-8e8f-9eb6570c6fed)
+```shell
+D:\anaconda3\envs\smp\lib\site-packages\scipy\__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.24.3
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+WebSocket transport not available. Install simple-websocket for improved performance.
+ * Serving Flask app "train" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.31.133:5000/ (Press CTRL+C to quit)
+```
 
 
 - 启动postman，将上一步程序启动生成的网址链接复制粘贴到postman的命令中，如http://192.168.31.133:5000/train。依次选择**POST， Body， raw， JSON** ，然后在下方空格输入如图内容。其中**path为上述的分路径，id为本次任务的唯一id**（可给出随意数字）。
