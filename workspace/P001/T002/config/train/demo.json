@@ -1,0 +1,49 @@
+{   
+    "instance_name": "resnet50_upernet_01_2023_6_1",
+
+    "data_root": "crackdataset",
+
+    "dataset_mean": [0.474, 0.493, 0.505],
+
+    "dataset_var": [0.162, 0.153, 0.152],
+
+    "scaled_size": [256, 256],
+    
+    "random_horizontal_flip_probability": 0.8, 
+
+    "random_vertical_flip_probability": 0.8,
+
+    "random_rotation_90_probability": 0.8,
+
+    "image_distortion_probability": 0.8,
+
+    "num_classes": 1,
+
+    "num_epochs": 20,
+
+    "val_interval": 10,
+
+    "num_gpus": 1,
+
+    "task_mode": "Object Recognition", 
+
+    "backbone_name": "resnet50",
+
+    "model_framework": "upernet", 
+
+    "batch_size": 16,
+
+    "optimizer": "AdamW",
+
+    "init_lr": 1e-3,
+
+    "lr_schedulr": "cosine",
+
+    "loss_function": "ensembleloss",
+
+    "log_print_iters_interval": 10,
+
+    "metrics_measures": ["IoU", "F1", "Pre", "Rec", "Acc"],
+
+    "use_amp": true
+}

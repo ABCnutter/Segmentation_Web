@@ -1,0 +1,11 @@
+{   
+    "infer_primal_image_path": "crackdataset/deploy/rgb_org/test2.tif",
+
+    "output_name": "test2",
+
+    "backbone_name": "mitb3",
+
+    "model_framework": "upernet",
+
+    "checkpoint": "checkpoint/mitb3_upernet_01_2023_5_16/mitb3_upernet_01_2023_5_16_val_best_iou.pth"
+}
