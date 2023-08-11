@@ -1,6 +1,7 @@
 # Segmentation_Web：通用二维语义分割算法及Web接口端署
 
-![OIP](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/172ecbcd-84bd-416b-baf8-002b16a1a197)
+
+![屏幕截图 2023-08-11 220133](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/9533ab09-89ee-4c29-b0e6-8ab3824607e4)
 
 
 本项目为二维图像语义分割通用项目后端算法框架，可用于自然图像、医疗影像、遥感影像的分割训练以及推理。本项目已基于Flask框架实现了Web端部署，已提供前端可调用的API接口，包括模型训练、推理、暂停恢复、日志打印保存、状态查询等功能，支持分布式训练、自动混合精度等。
