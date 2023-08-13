@@ -6,13 +6,17 @@
 
 本项目为二维图像语义分割通用项目后端算法框架，可用于自然图像、医疗影像、遥感影像的分割训练以及推理。本项目已基于Flask框架实现了Web端部署，已提供前端可调用的API接口，包括模型训练、推理、暂停恢复、日志打印保存、状态查询等功能，支持分布式训练、自动混合精度等。
 
+- 基于可见光图像的柑橘花果梢语义分割
+
 ![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/e8819445-8627-4b5b-a6a1-17ae263d95cb)
 
+- 基于X射线影像的牙齿语义分割
 
 ![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/e8f1bf39-ec09-4f55-bc74-25bc415162cb)
 
+- 基于无人机影像的矿区地裂缝语义分割
 
-
+![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/5a833ef9-d440-4877-a694-b80e1af176d7)
 
 
 ## 项目结构
