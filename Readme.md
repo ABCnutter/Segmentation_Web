@@ -12,7 +12,8 @@
 
 - 基于X射线影像的牙齿语义分割
 
-![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/e8f1bf39-ec09-4f55-bc74-25bc415162cb)
+![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/617c901f-0f96-4b10-b19f-e7b2b47578f2)
+
 
 - 基于无人机影像的矿区地裂缝语义分割
 
