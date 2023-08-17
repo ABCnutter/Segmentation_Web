@@ -1,4 +1,4 @@
-# Segmentation_Web：通用二维语义分割算法及Web接口端署
+# Segmentation_Web：通用2D语义分割算法及Web接口端署
 
 
 ![屏幕截图 2023-08-11 220133](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/9533ab09-89ee-4c29-b0e6-8ab3824607e4)
