@@ -1,6 +1,26 @@
-# Segmentation_Web：通用二维语义分割算法及Web接口端署
+# Segmentation_Web：通用2D语义分割算法及Web接口端署
+
+
+![屏幕截图 2023-08-11 220133](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/9533ab09-89ee-4c29-b0e6-8ab3824607e4)
+
 
 本项目为二维图像语义分割通用项目后端算法框架，可用于自然图像、医疗影像、遥感影像的分割训练以及推理。本项目已基于Flask框架实现了Web端部署，已提供前端可调用的API接口，包括模型训练、推理、暂停恢复、日志打印保存、状态查询等功能，支持分布式训练、自动混合精度等。
+
+**项目实战展示**
+
+- 基于自然可见光图像的柑橘花果梢语义分割
+
+![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/e8819445-8627-4b5b-a6a1-17ae263d95cb)
+
+- 基于X射线医疗影像的牙齿语义分割
+
+![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/617c901f-0f96-4b10-b19f-e7b2b47578f2)
+
+
+- 基于无人机影像的矿区地裂缝语义分割
+
+![image](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/5a833ef9-d440-4877-a694-b80e1af176d7)
+
 
 ## 项目结构
 
@@ -151,7 +171,8 @@ pip install -r requirements.txt
 
 项目的数据存放、结果缓存等存放在工作空间内，工作空间的路径自己确定，需要在命令行启动项目时给出，若不给出，则默认为warkspace路径。工作空间的文件夹结构如下：
 
-![image-20230811202146348](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811202146348.png)
+![image-20230811202146348](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/18a66ff7-e86a-4b69-8845-1d08a34ec260)
+
 
 如上图所示，P001\T002为工作空间下的相对路径，它是单一任务给出的**分区工作空间**（分路径，此次任务的生成的文件信息都会保存在该分路径下）。项目的参数配置文件（json格式）也在该分路径下，**路径格式必须为：分路径/config/train/demo.json、分路径/config/infer/demo.json**。**大家可以在配置文件中修改项目训练及推理参数，对于一些在配置文件中找不到的参数，可以在train.py或infer.py中的命令行设置函数中寻找并修改**。
 
@@ -235,11 +256,27 @@ infer.json:
   python train.py -workspacebasedir # workspacebasedir未给出，则默认创建workspace路径
   ```
 
-- 启动程序后出现，flask持续监听，![image-20230811203405898](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811203405898.png)
+- 启动程序后出现，flask持续监听。
+
+```shell
+D:\anaconda3\envs\smp\lib\site-packages\scipy\__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.24.3
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+WebSocket transport not available. Install simple-websocket for improved performance.
+ * Serving Flask app "train" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.31.133:5000/ (Press CTRL+C to quit)
+```
+
 
 - 启动postman，将上一步程序启动生成的网址链接复制粘贴到postman的命令中，如http://192.168.31.133:5000/train。依次选择**POST， Body， raw， JSON** ，然后在下方空格输入如图内容。其中**path为上述的分路径，id为本次任务的唯一id**（可给出随意数字）。
 
-![image-20230811203837581](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811203837581.png)
+![image-20230811203834557](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/49c4fdd9-abc6-4081-9d2e-2bd2922b615a)
+
 
 推理流程与训练类似：
 
@@ -266,7 +303,8 @@ D:\anaconda3\envs\smp\lib\site-packages\scipy\__init__.py:146: UserWarning: A Nu
 
 - 启动postman，将上一步程序启动生成的网址链接复制粘贴到postman的命令中，如http://192.168.31.133:5000/infer。依次选择**POST， Body， raw， JSON** ，然后在下方空格输入如图内容。其中path为上述的分路径，id为本次任务的唯一id（可给出随意数字）。
 
-![image-20230811204857986](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811204857986.png)
+![image-20230811204857986](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/34bbb3b2-817c-4f6e-b238-39cf7f65c2a1)
+
 
 ### 状态查询
 
@@ -283,7 +321,8 @@ D:\anaconda3\envs\smp\lib\site-packages\scipy\__init__.py:146: UserWarning: A Nu
 'finished'，
 ```
 
-![image-20230811205455883](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811205455883.png)
+![image-20230811205455883](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/34e644ba-05f2-4c64-98b2-354843621e1d)
+
 
 推理支持以下几种状态：
 
@@ -294,15 +333,18 @@ D:\anaconda3\envs\smp\lib\site-packages\scipy\__init__.py:146: UserWarning: A Nu
 'finished'，
 ```
 
-![image-20230811205507400](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811205507400.png)
+![image-20230811205507400](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/4ab27d23-2511-44ee-bd00-051c258593ab)
+
 
 ### 暂停恢复
 
 训练的暂停与恢复,也是通过postman启动。**需给出任务id**。
 
-![image-20230811205605976](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811205605976.png)
+![image-20230811205605976](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/29477412-57e1-4f28-8324-4382a02e95e6)
 
-![image-20230811205653506](E:\CS\DL\pytorch\work\seg_dev_BEIFEN\Readme.assets\image-20230811205653506.png)
+
+![image-20230811205653506](https://github.com/ABCnutter/Segmentation_Web/assets/91233657/b7044789-ddc0-4a68-b46c-f550091ddd85)
+
 
 **注意**：
 
