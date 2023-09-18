@@ -58,23 +58,23 @@ RepetitionRate 重复率
 '''
 
 
-def TifCrop(TifPath, SavePath, CropSize, RepetitionRate, logger:logging.Logger):
+def TifCrop(TifPath, SavePath, CropSize, RepetitionRate):
     dataset_img = readTif(TifPath)
     width = dataset_img.RasterXSize
     height = dataset_img.RasterYSize
     proj = dataset_img.GetProjection()
     geotrans = dataset_img.GetGeoTransform()
-    logger.info(f"width:{width}")
-    logger.info(f"height:{height}")
-    logger.info(f"proj:{proj}")
-    logger.info(f"geotrans:{geotrans}")
+    logging.info(f"width:{width}")
+    logging.info(f"height:{height}")
+    logging.info(f"proj:{proj}")
+    logging.info(f"geotrans:{geotrans}")
     img = dataset_img.ReadAsArray(0, 0, width, height)  # 获取数据
     num_h = (height - CropSize * RepetitionRate) // (CropSize * (1 - RepetitionRate))
     num_w = (width - CropSize * RepetitionRate) // (CropSize * (1 - RepetitionRate))
     #  获取当前文件夹的文件个数len,并以len+1命名即将裁剪得到的图像
     new_name = len(os.listdir(SavePath))
     #  裁剪图片,重复率为RepetitionRate
-    logger.info("-------------------==================== Start Croping ======================---------------------")
+    logging.info("-------------------==================== Start Croping ======================---------------------")
 
     for i in range(num_h):
         for j in range(num_w):
@@ -92,7 +92,7 @@ def TifCrop(TifPath, SavePath, CropSize, RepetitionRate, logger:logging.Logger):
             writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)
             #  文件名 + 1
             new_name = new_name + 1
-    logger.info(f"---------------- Normal range is complete. A total of {num_h * num_w} small block images！----------------")
+    logging.info(f"---------------- Normal range is complete. A total of {num_h * num_w} small block images！----------------")
 
     #  向前裁剪最后一列
     for i in range(num_h):
@@ -106,7 +106,7 @@ def TifCrop(TifPath, SavePath, CropSize, RepetitionRate, logger:logging.Logger):
         #  写图像
         writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)
         new_name = new_name + 1
-    logger.info(f"---------------- Rightmost column is complete. A total of {num_h} small block images！----------------")
+    logging.info(f"---------------- Rightmost column is complete. A total of {num_h} small block images！----------------")
 
     #  向前裁剪最后一行
     for j in range(num_w):
@@ -120,7 +120,7 @@ def TifCrop(TifPath, SavePath, CropSize, RepetitionRate, logger:logging.Logger):
         writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)
         #  文件名 + 1
         new_name = new_name + 1
-    logger.info(f"---------------- Bottom line is complete. A total of {num_w} small block images！----------------")
+    logging.info(f"---------------- Bottom line is complete. A total of {num_w} small block images！----------------")
 
     #  裁剪右下角
     if (len(img.shape) == 2):
@@ -130,11 +130,11 @@ def TifCrop(TifPath, SavePath, CropSize, RepetitionRate, logger:logging.Logger):
         cropped = img[:,
                   (height - CropSize): height,
                   (width - CropSize): width]
-    logger.info(f"---------------- Bottom right corner is complete. A total of {1} small block images！----------------")
+    logging.info(f"---------------- Bottom right corner is complete. A total of {1} small block images！----------------")
 
     writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)
     new_name = new_name + 1
 
-    logger.info(f"---------------- Crop complete! the output file is at {SavePath} ----------------")
+    logging.info(f"---------------- Crop complete! the output file is at {SavePath} ----------------")
 
     return width, height, proj, geotrans
